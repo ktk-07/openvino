@@ -30,7 +30,7 @@ OutputVector translate_poisson(const NodeContext& context) {
     uint64_t op_seed = 0;
     // When both seeds are 0, backend/reference may use non-deterministic RNG (e.g. time-based).
     // Alignment PYTORCH matches PyTorch's Philox usage (same as aten::bernoulli and aten::multinomial).
-    return {context.mark_node(std::make_shared<ov::op::v0::RandomPoisson>(input,
+    return {context.mark_node(std::make_shared<ov::op::v17::RandomPoisson>(input,
                                                                             global_seed,
                                                                             op_seed,
                                                                             ov::op::PhiloxAlignment::PYTORCH))};
